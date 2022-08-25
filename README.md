@@ -4,6 +4,9 @@ The default for the 3d resolution is now double the selected resolution, to achi
 
 This mod only affects the 3d segments of the game: the VN segments are left intact.
 
+# Installation
+Just drag and drop the `dinput8.dll` file on the game's installation folder.
+
 # Configuration
 The default supersampling rate is 2.0 (which means double the current resolution).
 Most won't need to configure the mod, since the game's 3d segments are extremely lightweight compared to modern games, and scaling it even more than that doesn't really produce a better result.
