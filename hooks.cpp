@@ -471,23 +471,55 @@ bool DetermineGame()
 {
     if (*(char*)0x91F5AE == '1') // prelude
     {
-        debugprintf("Game detected: Prelude to the Fallen\n");
+        debugprintf("Game detected: Prelude to the Fallen (EN)\n");
         Addresses.ResizeWindow = (void*)0x50CE20;
         Addresses.Res3dOverride = (void*)0x451492;
         Addresses.CreateTexture = (void*)0x4FD2A3;
         Addresses.Flip = (void*)0x4FE0D5;
         Addresses.Res3dX = (int*)0xA0139C;
         Addresses.Res3dY = (int*)0xA013A0;
-        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x4FF2EE;
+        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x4FF2EE; // Kernel::Graphics::CreateRenderTarget
         Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x4FF3A0;
         Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0xA01D38;
         Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0xA01538;
         return true;
     }
 
+    if (*(char*)0x91F58A == '1') // prelude jp
+    {
+        debugprintf("Game detected: Prelude to the Fallen (JP)\n");
+        Addresses.ResizeWindow = (void*)0x50D0F5; // ResizeWindow
+        Addresses.Res3dOverride = (void*)0x45156E;
+        Addresses.CreateTexture = (void*)0x4FD578;
+        Addresses.Flip = (void*)0x4FE3AA; // Kernel::CGraphics::_Flip
+        Addresses.Res3dX = (int*)0xA00544;
+        Addresses.Res3dY = (int*)0xA00548;
+        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x4FF5C3; // Kernel::Graphics::CreateRenderTarget
+        Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x4FF675;
+        Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0xA00884;
+        Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0xA0039C;
+        return true;
+    }
+
+    if (*(char*)0x91F57E == '1') // prelude chinese
+    {
+        debugprintf("Game detected: Prelude to the Fallen (CN)\n");
+        Addresses.ResizeWindow = (void*)0x50D11B; // ResizeWindow
+        Addresses.Res3dOverride = (void*)0x451595;
+        Addresses.CreateTexture = (void*)0x4FD59E; // Kernel::CGraphics::_CreateTexture
+        Addresses.Flip = (void*)0x4FE3D0; // Kernel::CGraphics::_Flip
+        Addresses.Res3dX = (int*)0xA00544;
+        Addresses.Res3dY = (int*)0xA00548;
+        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x4FF5E9; // Kernel::Graphics::CreateRenderTarget
+        Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0xA00884;
+        Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x4FF69B;
+        Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0xA0039C;
+        return true;
+    }
+
     if (*(char*)0x8F0792 == '2') // deception
     {
-        debugprintf("Game detected: Mask of Deception\n");
+        debugprintf("Game detected: Mask of Deception (EN)\n");
         Addresses.ResizeWindow = (void*)0x503515;
         Addresses.Res3dOverride = (void*)0x42523E;
         Addresses.CreateTexture = (void*)0x4F3A9F;
@@ -501,9 +533,41 @@ bool DetermineGame()
         return true;
     }
 
+    if (*(char*)0x8F1766 == '2') // deception jp
+    {
+        debugprintf("Game detected: Mask of Deception (JP)\n");
+        Addresses.ResizeWindow = (void*)0x5038D2; // ResizeWindow
+        Addresses.Res3dOverride = (void*)0x42523A;
+        Addresses.CreateTexture = (void*)0x4F3E5C; // Kernel::CGraphics::_CreateTexture
+        Addresses.Flip = (void*)0x4F4C8E; // Kernel::CGraphics::_Flip
+        Addresses.Res3dX = (int*)0x9D8584;
+        Addresses.Res3dY = (int*)0x9D8588;
+        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x4F5EA7; // Kernel::Graphics::CreateRenderTarget
+        Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0x9D8D70;
+        Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x4F5F26;
+        Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0x9D83DC;
+        return true;
+    }
+
+    if (*(char*)0x8F1762 == '2') // deception cn
+    {
+        debugprintf("Game detected: Mask of Deception (CN)\n");
+        Addresses.ResizeWindow = (void*)0x5038D1; // ResizeWindow
+        Addresses.Res3dOverride = (void*)0x425239;
+        Addresses.CreateTexture = (void*)0x4F3E5B; // Kernel::CGraphics::_CreateTexture
+        Addresses.Flip = (void*)0x4F4C8D; // Kernel::CGraphics::_Flip
+        Addresses.Res3dX = (int*)0x9D8584;
+        Addresses.Res3dY = (int*)0x9D8588;
+        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x4F5EA6; // Kernel::Graphics::CreateRenderTarget
+        Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x4F5F25;
+        Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0x9D8D70;
+        Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0x9D83DC;
+        return true;
+    }
+
     if (*(char*)0x91C53E == '3') // truth
     {
-        debugprintf("Game detected: Mask of Truth\n");
+        debugprintf("Game detected: Mask of Truth (EN)\n");
         Addresses.ResizeWindow = (void*)0x528CA4;
         Addresses.Res3dOverride = (void*)0x436CAD;
         Addresses.CreateTexture = (void*)0x51922E;
@@ -514,6 +578,38 @@ bool DetermineGame()
         Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x51B2F8;
         Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0xA06AFC;
         Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0xA06488;
+        return true;
+    }
+
+    if (*(char*)0x91D51E == '3') // truth jp
+    {
+        debugprintf("Game detected: Mask of Truth (JP)\n");
+        Addresses.ResizeWindow = (void*)0x5290A4; // ResizeWindow
+        Addresses.Res3dOverride = (void*)0x436D55;
+        Addresses.CreateTexture = (void*)0x51962E; // Kernel::CGraphics::_CreateTexture
+        Addresses.Flip = (void*)0x51A460; // Kernel::CGraphics::_Flip
+        Addresses.Res3dX = (int*)0xA07628;
+        Addresses.Res3dY = (int*)0xA0762C;
+        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x51B679; // Kernel::Graphics::CreateRenderTarget
+        Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0xA07AFC;
+        Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x51B6F8;
+        Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0xA07488;
+        return true;
+    }
+
+    if (*(char*)0x91D51A == '3') // truth cn
+    {
+        debugprintf("Game detected: Mask of Truth (CN)\n");
+        Addresses.ResizeWindow = (void*)0x5290A3; // ResizeWindow
+        Addresses.Res3dOverride = (void*)0x436D54;
+        Addresses.CreateTexture = (void*)0x51962D; // Kernel::CGraphics::_CreateTexture
+        Addresses.Flip = (void*)0x51A45F; // Kernel::CGraphics::_Flip
+        Addresses.Res3dX = (int*)0xA07628;
+        Addresses.Res3dY = (int*)0xA0762C;
+        Addresses.CreateWorldTexture1 = (CreateWorldTexture1_t)0x51B678; // Kernel::Graphics::CreateRenderTarget
+        Addresses.worldTexture1 = (Kernel_CGraphics_Texture**)0xA07AFC;
+        Addresses.CreateWorldTexture2 = (CreateWorldTexture2_t)0x51B6F7;
+        Addresses.worldTexture2 = (Kernel_CGraphics_Texture**)0xA07488;
         return true;
     }
 
