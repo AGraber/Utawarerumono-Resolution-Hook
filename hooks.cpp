@@ -685,6 +685,7 @@ void LoadSupersamplingRate()
 
 void hooks_init()
 {
+    SetProcessDpiAwareness(PROCESS_PER_MONITOR_DPI_AWARE);
     ConsoleStuff();
 
     // Load custom supersampling rate
